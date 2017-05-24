@@ -1,0 +1,392 @@
+    html, body{
+      height: 100%;
+      width: 100%;
+    }
+    /* body {
+      padding-top: 50px;
+    } 
+    */
+    #container{
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+      background-color: #666666;
+    }
+    #sidebar {
+      -webkit-transition: all 0.25s ease-out;
+        -moz-transition: all 0.25s ease-out;
+        transition: all 0.25s ease-out;
+    }
+    #sidebar{
+      height: 100%;
+    }
+    #map {
+      height:97%;
+      overflow: hidden;
+      margin-top:0px;
+    }
+    .mapboxgl-ctrl-attrib.compact {
+    margin: 10px 10px 10px 10px;
+    }
+    #sidebar2 {
+      height:97%;
+      overflow: auto;
+      margin-top:0px;
+    }
+    #accordion {
+      overflow-y: auto;
+      margin-top: 5px;
+    }
+    .modal-footer {
+    padding: 5px;
+  }
+    #about{
+      color:white;
+    }
+    h1 {
+    font-size:22px;
+    margin:0;
+    font-weight:400;
+    line-height: 20px;
+    padding: 20px 2px;
+    }
+    a {
+    color:#404040;
+    text-decoration:none;
+    }
+    a:hover { 
+    color:#101010; 
+    }
+    .heading {
+    background:#666666;
+    border-bottom:1px solid #eee;
+    /*  min-height:60px; */
+    line-height:10px;
+    padding:0 10px;
+    color: white;
+    }
+    .listings {
+    height:100%;
+    overflow:auto;
+    padding-bottom:0px;
+    }
+    .listings .item {
+    display:block;
+    border-bottom:1px solid #666666;
+    padding:6px;
+    text-decoration:none;
+    }
+    .listings .item:last-child { border-bottom:none; }
+    .listings .item .title {
+    display:block;
+    /*  color:#00853e; */
+    color:#7F2626;
+    font-weight:700;
+    }
+    .listings .item .title small { font-weight:400; }
+    .listings .item.active .title,
+    /*  .listings .item .title:hover { color:#8cc63f; } */
+    .listings .item .title:hover { color:#ff6666; }
+    .listings .item.active {
+    background-color:#f8f8f8;
+    }
+    ::-webkit-scrollbar {
+    width:3px;
+    height:3px;
+    border-left:0;
+    background:rgba(0,0,0,0.1);
+    }
+    ::-webkit-scrollbar-track {
+    background:none;
+    }
+    ::-webkit-scrollbar-thumb {
+    background:#00853e;
+    border-radius:0;
+    }
+    .clearfix { display:block; }
+    .clearfix:after {
+    content:'.';
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+    }
+    /* Marker tweaks */
+    .mapboxgl-popup {
+    padding-bottom: 30px;
+    }
+    .mapboxgl-popup-close-button {
+    display:none;
+    }
+    .mapboxgl-popup-content {
+    font:400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+    padding:0;
+    width:330px;
+    }
+    .mapboxgl-popup-content-wrapper {
+    padding:1%;
+    }
+    .mapboxgl-popup-content h3 {
+    background:#666666;
+    color:#fff;
+    margin:0;
+    display:block;
+    padding:10px;
+    border-radius:3px 3px 0 0;
+    font-weight:700;
+    margin-top:-15px;
+    }
+     .mapboxgl-popup-content .addr {
+    font-style: italic;
+    font-size: 55%;
+    }
+    .addr {
+    font-style: italic;
+    font-size: 75%;
+    }
+    .mapboxgl-popup-content h4 {
+    margin:0;
+    display:block;
+    padding: 10px 10px 10px 10px;
+    font-weight:400;
+    margin: 0;
+    }
+    .mapboxgl-popup-content div {
+    padding:10px;
+    }
+    .mapboxgl-container .leaflet-marker-icon { 
+    cursor:pointer; 
+    }
+    .mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
+    margin-top: 15px;
+    }
+    .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
+    border-bottom-color: #91c949;
+    }
+/* Sidebar Layout */
+#card_legend {
+  color: #4c4d4f;
+  background-color: #f2f0f7;
+  border-color: #4c4d4f;
+  font-size: 20px;
+  height: 40px;
+}    
+#card {
+  background-color: #66cccc;
+  border-color: #66cccc;
+  color: #ffffff;
+  font-size: 20px;
+ /*   padding-left: 15px;
+margin:10px 5px 5px 5px; */
+  text-align: center;
+  min-height: 35px;
+  padding:3px 0px 0px 0px;
+}
+#card > a ,#card2 > a {
+  color: #ffffff;
+  font-weight: bold;
+}
+#card > a:hover, #card2 > a:hover {
+color:#101010; 
+}
+#cardped {
+    color: #fff;
+    background-color: #4c4d4f;
+    border-color: #4c4d4f;
+    text-align: center;
+}
+#cardpedpanel{
+  border-color: white;
+  background-color:#f2f0f7;
+  margin:3px -10px 3px -10px;
+}
+#cardpedpanel2{
+  border-color: white;
+  background-color:#f2f0f7;
+  margin:3px -10px 10px -10px;
+}
+#card2 {
+  background-color: #ff6666;
+  border-color: #ff6666;
+  color: #ffffff;
+  font-size: 20px;
+ /* padding-left: 15px;
+  margin:10px 5px 5px 5px; */
+  text-align: center;
+  min-height: 35px;
+   padding:3px 0px 0px 0px;
+}
+.one {
+  color:#428bca;
+}
+.one a:hover, a:focus {
+    color: #2a6496;
+    text-decoration: underline;
+}
+.amen_icons{
+  float:right;
+  margin-top:-38px;
+}
+.list_icons{
+  height:32px;
+  width: 30px;
+}
+.list_icons2{
+  height:40px;
+  width: 50px;
+}
+.list_icons3{
+  height:40px;
+  width: 45px;
+}
+.list_markers{
+  height:22px;
+  width: 22px;
+}
+.list_markersINFO{
+  height:35px;
+  width: 35px;
+}
+.address_info{
+  margin-left: 31px;
+}
+.dplogo{
+  margin:0px 0px 20px 200px;
+  height:70px;
+}
+.dptitle{
+height:90px;
+margin:0px 0px 20px 80px;
+}
+.dpdate{
+width:400px;
+margin:0px 0px 20px 80px;
+}
+.dp{
+  height:40px;
+}
+.dp_info{
+  color:white;
+  text-align: center;
+}
+#dpbutton{
+  background-color:#ff6666;
+  margin:50px 0px 0px 0px;
+  border-color: #ffb2b2;
+}
+.ecitylogo{
+  margin:5px 0px 0px 0px;
+  height:110px;
+}
+@media (max-width: 1024px){
+                 .listings .item .title {
+                display:block;
+                font-size:85%;
+                }
+                .address_info {
+                    display:none;
+                }
+                .amen_icons{
+                float:right;
+                margin-top:-28px;
+                }
+                .list_icons{
+                  margin-top: 3px;
+                  height: 28px;
+                  width: 26px;
+                }
+                .list_icons2{
+                  height:30px;
+                  width: 40px;
+                }
+                .list_icons3{
+                  height:32px;
+                  width: 37px;
+                }
+            }
+@media (max-width: 500px){
+                 .listings .item .title {
+                display:block;
+                font-size:85%;
+                }
+                .address_info {
+                    display:block;
+                }
+                .amen_icons{
+                float:right;
+                margin-top:-38px;
+                }
+                .dplogo{
+                  margin:0px 0px 20px 110px;
+                  height:40px;
+                  }
+                  .dptitle{
+                  height:50px;
+                  margin:0px 0px 20px 40px;
+                  }
+                  .dpdate{
+                  width:300px;
+                  margin:0px 0px 20px 10px;
+                  }
+                  .dp_info {
+                      color: white;
+                      text-align: center;
+                      font-size: 90%;
+                  }
+                  #dpbutton{
+                  background-color:#ff6666;
+                  margin: 20px 0px 0px 5px;
+                  border-color: #ffb2b2;
+                }
+                .ecitylogo{
+                  margin:5px 0px 0px -5px;
+                  height:70px;
+                }
+                 .mapboxgl-popup {
+              padding-bottom: 30px;
+              }
+              .mapboxgl-popup-content {
+              font:400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+              padding:0;
+              width:280px;
+              }
+              .mapboxgl-popup-content-wrapper {
+              padding:1%;
+              }
+              .mapboxgl-popup-content h3 {
+              background:#666666;
+              color:#fff;
+              margin:0;
+              display:block;
+              padding:10px;
+              border-radius:3px 3px 0 0;
+              font-weight:700;
+              margin-top:-15px;
+              }
+               .mapboxgl-popup-content .addr {
+              font-style: italic;
+              font-size: 55%;
+              }
+              .mapboxgl-popup-content h4 {
+              margin:0;
+              display:block;
+              padding: 10px 10px 10px 10px;
+              font-weight:400;
+              margin: 0;
+              }
+              .mapboxgl-popup-content div {
+              padding:10px;
+              }
+              .mapboxgl-container .leaflet-marker-icon { 
+              cursor:pointer; 
+              }
+              .mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
+              margin-top: 15px;
+              }
+              .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
+              border-bottom-color: #91c949;
+              }
+               #sidebar2 {
+                display:none;
+    }
+            }            
