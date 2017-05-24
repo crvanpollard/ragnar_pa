@@ -182,7 +182,7 @@ margin:10px 5px 5px 5px; */
   min-height: 35px;
   padding:3px 0px 0px 0px;
 }
-#card > a ,#card2 > a {
+#card > a , #card2 > a , #card3 > a {
   color: #ffffff;
   font-weight: bold;
 }
@@ -206,6 +206,17 @@ color:#101010;
   margin:3px -10px 10px -10px;
 }
 #card2 {
+  background-color: #ff6666;
+  border-color: #ff6666;
+  color: #ffffff;
+  font-size: 20px;
+ /* padding-left: 15px;
+  margin:10px 5px 5px 5px; */
+  text-align: center;
+  min-height: 35px;
+   padding:3px 0px 0px 0px;
+}
+#card3 {
   background-color: #ff6666;
   border-color: #ff6666;
   color: #ffffff;

@@ -36,7 +36,8 @@
   var map = new mapboxgl.Map({
     // container id specified in the HTML
     container: "map", 
-    style: 'mapbox://styles/mapbox/dark-v9', 
+   // style: 'mapbox://styles/mapbox/dark-v9', 
+    style:'mapbox://styles/mapbox/outdoors-v10',
   //style: 'mapbox://styles/crvanpollard/ciyd8fyqo008j2rqfku4qxcb9',
     center: [ -75.898,40.369], 
     bearing: 20, // Rotate Philly ~9° off of north, thanks Billy Penn.
@@ -67,7 +68,7 @@ HUB.features.forEach(function(marker2) {
     // create a DOM element for the marker
     var el2 = document.createElement('div');
     el2.className = marker2.properties.CLASS;
-    el2.style.backgroundImage = 'url(https://raw.githubusercontent.com/crvanpollard/mapbox_listings/master/assets/img/'+marker2.properties.ICON + '.png)';
+    el2.style.backgroundImage = 'url(https://raw.githubusercontent.com/crvanpollard/rangar_pa/master/assets/img/'+marker2.properties.Leg + '.png)';
     el2.style.width = marker2.properties.Width;
     el2.style.height = marker2.properties.Height;
 //    el2.addEventListener('click', function() {
@@ -101,7 +102,7 @@ HUB.features.forEach(function(marker2) {
       el.className = 'marker';
       el.style.left ='-15px';
       el.style.top ='-26px';
-      el.style.backgroundImage = 'url(https://raw.githubusercontent.com/crvanpollard/mapbox_listings/master/assets/img/markers/'+marker.properties.Leg + '.png)';
+      el.style.backgroundImage = 'url(https://raw.githubusercontent.com/crvanpollard/rangar_pa/master/assets/img/markers/'+marker.properties.Leg + '.png)';
       el.style.width = '25px';
       el.style.height ='25px';
 
@@ -168,7 +169,7 @@ HUB.features.forEach(function(marker2) {
           else { var web =  '<a class="one" href="' + currentFeature.properties.Website+'" target="_new">Visit the website</a>';}
 
             
-          var title = '<h3 style="padding-bottom:1px;padding-top:10px;background:'+ currentFeature.properties.POPCOLOR +'"><img src="https://raw.githubusercontent.com/crvanpollard/mapbox_listings/master/assets/img/markers/'+ currentFeature.properties.MAP_ID + '.png" class="list_markersINFO" style="vertical-align: middle;margin-right:5px;">'+currentFeature.properties.Name +'<br><p class="addr">'+currentFeature.properties.Address + '</font></h3>';
+          var title = '<h3 style="padding-bottom:1px;padding-top:10px;background:'+ currentFeature.properties.POPCOLOR +'"><img src="https://raw.githubusercontent.com/crvanpollard/rangar_pa/master/assets/img/markers/'+ currentFeature.properties.Leg + '.png" class="list_markersINFO" style="vertical-align: middle;margin-right:5px;">'+currentFeature.properties.Name +'<br><p class="addr">'+currentFeature.properties.Location + '</font></h3>';
           var content = '<h4>' + info2 + web +'</h4>';
 
           // Modal Content
@@ -195,7 +196,7 @@ HUB.features.forEach(function(marker2) {
       link.href = '#';
       link.className = 'title';
       link.dataPosition = i;
-      link.innerHTML = '<img src="https://raw.githubusercontent.com/crvanpollard/mapbox_listings/master/assets/img/markers/'+ prop.Leg+ '.png" class="list_markers" style="vertical-align: middle;margin-right:5px;">'+ prop.Name;     
+      link.innerHTML = '<img src="https://raw.githubusercontent.com/crvanpollard/rangar_pa/master/assets/img/markers/'+ prop.Leg+ '.png" class="list_markers" style="vertical-align: middle;margin-right:5px;">'+ prop.Name;     
       
       var details = listing.appendChild(document.createElement('div'));
      // content = prop.Address + '<br>'+prop.Amenities;
@@ -210,9 +211,9 @@ HUB.features.forEach(function(marker2) {
       else { var amshow ='<div class="amen_icons"> <img class="'+ prop.ICON_CLASS +'" src="https://raw.githubusercontent.com/crvanpollard/mapbox_listings/master/assets/img/amenities/'+ prop.AM_ICON + '.png" >';}
 
       content = '<div class="address_info">'
-                + prop.Address 
+                + prop.Location 
                 +'</div>'
-                + amshow
+              //  + amshow
           //      + WC
           //      + Parking
          //       + STEPS
