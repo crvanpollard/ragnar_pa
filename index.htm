@@ -45,12 +45,7 @@
       <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       <script src="assets/data/pace.js"> </script>
-      <script src="assets/data/HUB.js"></script>
-      <script src="assets/data/walking_dash.js"></script>
-      <script src="assets/data/walking.js"></script>
-      <script src="assets/data/curbcuts.js"></script>
-      <script src="assets/data/no_sidewalks.js"></script>
-      <script src="assets/data/parks.js"></script>
+      <script src="assets/data/race_legs.js"></script>
       <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.33.1/mapbox-gl.js'></script>
       <style>
       .marker{
@@ -133,7 +128,7 @@
             cursor: pointer;
             font-size:12px;
             text-decoration:none;
-            background-image: url(https://raw.githubusercontent.com/crvanpollard/mapbox_listings/master/assets/img/HUB_GREY.png);
+            background-image: url(https://raw.githubusercontent.com/crvanpollard/ragnar_pa/master/assets/img/kitt.png);
             background-size: 25px 25px;
              background-position: center; 
             background-repeat: no-repeat;
@@ -148,7 +143,7 @@
             border-radius: 3px;
             bottom: 35px;
             right: 20px;
-            width: 220px;
+            width: 120px;
             box-shadow: 0 1px 2px rgba(0,0,0,0.10);
             font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
             padding: 10px;
@@ -186,23 +181,23 @@
           <div id='state-legend'>
             <div class="content-one">
             <div id='extent'>  
-            <div><img src='assets/img/amenities/sponsor.png' style='height:13px;margin-left: 15px;'><span></span>Event Sponsor</div>
-            <div><img src='assets/img/amenities/business.png' style='height:13px;margin-left: 15px;'><span></span>Local Business</div>
-            <div><span2 style='background-color: #66cccc'></span2>Walkabout (Upbeat Loop)</div>
-            <div><span2 style='background-color: #FF6666'></span2>Stroll (Relax Loop)</div>
+            <div><span2 style='background-color: #2ecc71'></span2>Easy</div>
+            <div><span2 style='background-color: #17bebb'></span2>Moderate</div>
+            <div><span2 style='background-color: #d62246'></span2>Hard</div>
+            <div><span2 style='background-color: #4b1d3f'></span2>Very Hard</div>
           </div>
             </div>
           </div>
-          <div id='county-legend' style='display: none;'>
+
+       <!--    <div id='county-legend' style='display: none;'>
             <div class="content-one">
-             <div><img src='assets/img/amenities/sponsor.png' style='height:13px;margin-left: 15px;'><span style='margin-right: 12px;'></span>Event Sponsor</div>
-            <div><img src='assets/img/amenities/business.png' style='height:13px;margin-left: 15px;'><span style='margin-right: 12px;'></span>Local Business</div>
             <div><span2 style='background-color: #66cccc;margin-right: 10px;'></span2>Walkabout (Upbeat Loop)</div>
             <div><span2 style='background-color: #FF6666;margin-right: 10px;'></span2>Stroll (Relax Loop)</div>
             <div style="margin-left: 15px;"><span style='background-color: #FEE08B;margin-right:25px;'></span>Curb Cut</div>
             <div><img src='assets/img/noside.png' style='height:16px;margin-left:5px'><span style='margin-right: 5px;'></span>No Sidewalk</div>
           </div>
           </div>
+-->
        </div>   
         <a href='#' id='export'></a>
       </div>
@@ -211,7 +206,7 @@
          <div class="panel-group" id="accordion">
                         <div class="panel panel-default">
                             <div class="panel-heading" id="card">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#overlay-layers">Let's Get This Party Started
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#overlay-layers">Let's Get This Party Started (Leg 1)
                                 </a>
                             </div>
                             <div id="overlay-layers" class="panel-collapse collapse in">
@@ -234,7 +229,7 @@
 
                         <div class="panel panel-default">
                             <div class="panel-heading" id="card2">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#overlay-layers2">Nightime is for kickin' ass
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#overlay-layers2">Nightime is for kickin' ass (Leg 2)
                                 </a>
                             </div>
                             <div id="overlay-layers2" class="panel-collapse collapse in">
@@ -257,7 +252,7 @@
 
                           <div class="panel panel-default">
                             <div class="panel-heading" id="card3">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#overlay-layers3">Almost Done!!
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#overlay-layers3">Almost Done!! (Leg 3)
                                 </a>
                             </div>
                             <div id="overlay-layers3" class="panel-collapse collapse in">

@@ -1,9 +1,6 @@
   var stores; 
-  var HUB;
   var zoomThreshold = 16;
-  var curbcuts;
-  var nosidewalks;
-  var walking, walking_dash;
+  var race_legs;
 
   $(document).ready(function() {
     //OPEN ABOUT DIALOG
@@ -57,30 +54,11 @@
             zoom: 9,
             speed: 0.1,
             bearing: -5,
-            pitch: 15
+            pitch: 35
           });
         }
       }
     }
-
-// add markers to map
-HUB.features.forEach(function(marker2) {
-    // create a DOM element for the marker
-    var el2 = document.createElement('div');
-    el2.className = marker2.properties.CLASS;
-    el2.style.backgroundImage = 'url(https://raw.githubusercontent.com/crvanpollard/rangar_pa/master/assets/img/'+marker2.properties.Leg + '.png)';
-    el2.style.width = marker2.properties.Width;
-    el2.style.height = marker2.properties.Height;
-//    el2.addEventListener('click', function() {
-    //    window.alert(marker2.properties.ICON);
-  //  });
-
-    // add marker to map
-    new mapboxgl.Marker(el2)
-        .setLngLat(marker2.geometry.coordinates)
-        .addTo(map)
-   });    
-
   // This adds the data to the map
   map.on('load', function (e) {
     // This is where your '.addLayer()' used to be, instead add only the source without styling a layer
@@ -90,9 +68,7 @@ HUB.features.forEach(function(marker2) {
     });
     // Initialize the list
     buildLocationList(stores);
-  });
-
-  
+  }); 
   // This is where your interactions with the symbol layer used to be
   // Now you have interactions with DOM markers instead
   stores.features.forEach(function(marker, i) {
@@ -102,7 +78,7 @@ HUB.features.forEach(function(marker2) {
       el.className = 'marker';
       el.style.left ='-15px';
       el.style.top ='-26px';
-      el.style.backgroundImage = 'url(https://raw.githubusercontent.com/crvanpollard/rangar_pa/master/assets/img/markers/'+marker.properties.Leg + '.png)';
+      el.style.backgroundImage = 'url(https://raw.githubusercontent.com/crvanpollard/ragnar_pa/master/assets/img/markers/'+marker.properties.Leg + '.png)';
       el.style.width = '25px';
       el.style.height ='25px';
 
@@ -130,6 +106,7 @@ HUB.features.forEach(function(marker2) {
   function flyToStore(currentFeature) {
     map.flyTo({
         center: currentFeature.geometry.coordinates,
+        pitch: 50,
         zoom: 14
       }); 
   }
@@ -146,13 +123,22 @@ HUB.features.forEach(function(marker2) {
 
 
           if (currentFeature.properties.Website ==='na'){ var web = '';}
-          else { var web =  '<a class="one" href="' + currentFeature.properties.Website+'" target="_new">Visit the website</a>';}
+          else { var web =  '<a class="one" href="' + currentFeature.properties.Website+'" target="_new">Launch Google Maps</a>';}
 
 
         var popup = new mapboxgl.Popup({closeOnClick: false})
               .setLngLat(currentFeature.geometry.coordinates)
-              .setHTML('<h3 style="padding-bottom:1px;background:'+ currentFeature.properties.POPCOLOR +'">'+ currentFeature.properties.Name +'<br><p class="addr">'+currentFeature.properties.Address + '</font></h3>' + 
-                '<h4>' + info2 + web +'</h4>')
+              .setHTML('<h3 style="padding-bottom:1px;background:'+ currentFeature.properties.POPCOLOR +'">'+ currentFeature.properties.Name +'<br><p class="addr">'+currentFeature.properties.Rating + ' ( '+currentFeature.properties.Miles+' miles)</font></h3>' + 
+                '<h4>'
+                + '<B>'+ currentFeature.properties.Location +'</B><br>' 
+                + 'Address: '+ currentFeature.properties.address +', '+currentFeature.properties.city+', '+currentFeature.properties.zip+'<br>' 
+                + 'Rating: '+ currentFeature.properties.Rating +'<br>' 
+                + 'Milage: '+ currentFeature.properties.Miles +' miles<br>' 
+                + 'Estimated Start: '+ currentFeature.properties.start+'<br>' 
+                + 'Estimated End: '+ currentFeature.properties.end+'<br>' 
+                + 'Estimated Time: '+ currentFeature.properties.etime+'<br>' 
+            //    + web 
+                +'</h4>')
               .addTo(map);
         }
            
@@ -162,14 +148,14 @@ HUB.features.forEach(function(marker2) {
       var popUps = document.getElementsByClassName('mapboxgl-popup');
         if (popUps[0]) popUps[0].remove();
 
-              if (currentFeature.properties.info ==='na'){ var info2 = '';}
+          if (currentFeature.properties.info ==='na'){ var info2 = '';}
           else { var info2 =  currentFeature.properties.info +'<br>';}
 
           if (currentFeature.properties.Website ==='na'){ var web = '';}
           else { var web =  '<a class="one" href="' + currentFeature.properties.Website+'" target="_new">Visit the website</a>';}
 
             
-          var title = '<h3 style="padding-bottom:1px;padding-top:10px;background:'+ currentFeature.properties.POPCOLOR +'"><img src="https://raw.githubusercontent.com/crvanpollard/rangar_pa/master/assets/img/markers/'+ currentFeature.properties.Leg + '.png" class="list_markersINFO" style="vertical-align: middle;margin-right:5px;">'+currentFeature.properties.Name +'<br><p class="addr">'+currentFeature.properties.Location + '</font></h3>';
+          var title = '<h3 style="padding-bottom:1px;padding-top:10px;background:'+ currentFeature.properties.POPCOLOR +'"><img src="https://raw.githubusercontent.com/crvanpollard/rangar_pa/master/assets/img/markers/'+ currentFeature.properties.Leg + '.png" class="list_markersINFO" style="vertical-align: middle;margin-right:5px;">'+currentFeature.properties.Name +'<br><p class="addr">'+currentFeature.properties.Location +' , '+currentFeature.properties.address + '</font></h3>';
           var content = '<h4>' + info2 + web +'</h4>';
 
           // Modal Content
@@ -196,7 +182,7 @@ HUB.features.forEach(function(marker2) {
       link.href = '#';
       link.className = 'title';
       link.dataPosition = i;
-      link.innerHTML = '<img src="https://raw.githubusercontent.com/crvanpollard/rangar_pa/master/assets/img/markers/'+ prop.Leg+ '.png" class="list_markers" style="vertical-align: middle;margin-right:5px;">'+ prop.Name;     
+      link.innerHTML = '<img src="https://raw.githubusercontent.com/crvanpollard/ragnar_pa/master/assets/img/markers/'+ prop.Leg+ '.png" class="list_markers" style="vertical-align: middle;margin-right:5px;">'+ prop.Name;     
       
       var details = listing.appendChild(document.createElement('div'));
      // content = prop.Address + '<br>'+prop.Amenities;
@@ -210,8 +196,10 @@ HUB.features.forEach(function(marker2) {
       if (prop.amshow ==='no'){ var amshow = '';}
       else { var amshow ='<div class="amen_icons"> <img class="'+ prop.ICON_CLASS +'" src="https://raw.githubusercontent.com/crvanpollard/mapbox_listings/master/assets/img/amenities/'+ prop.AM_ICON + '.png" >';}
 
-      content = '<div class="address_info">'
+      content = '<div class="address_info"><b>'
                 + prop.Location 
+                +'</b><br>'
+                + prop.address 
                 +'</div>'
               //  + amshow
           //      + WC
@@ -243,17 +231,17 @@ map.addControl(new mapboxgl.AttributionControl(),'top-right');
 
 
 var stateLegendEl = document.getElementById('extent');
-var countyLegendEl = document.getElementById('county-legend');
-map.on('zoom', function() {
-    if (map.getZoom() > zoomThreshold) {
-        stateLegendEl.style.display = 'none';
-        countyLegendEl.style.display = 'block';
-    } else {
-        countyLegendEl.style.display = 'none';
-        stateLegendEl.style.display = 'block';
+//var countyLegendEl = document.getElementById('county-legend');
+//map.on('zoom', function() {
+//    if (map.getZoom() > zoomThreshold) {
+//        stateLegendEl.style.display = 'none';
+//        countyLegendEl.style.display = 'block';
+//    } else {
+//        countyLegendEl.style.display = 'none';
+//        stateLegendEl.style.display = 'block';
 
-    }
-});
+//    }
+//});
 
 document.getElementById('export').addEventListener('click', function () {
     // Fly to a random location by offsetting the point -74.50, 40
@@ -266,80 +254,14 @@ document.getElementById('export').addEventListener('click', function () {
             zoom: 9,
             speed: 0.5,
             bearing: -5,
-            pitch: 15
+            pitch: 35
     });
 });
-
 
 map.on('click', function (currentFeature) {
     var popUps = document.getElementsByClassName('mapboxgl-popup');
     if (popUps[0]) popUps[0].remove();
 });
-
-// parks layer
-map.on('load', function () {
-
-    map.addLayer({
-        "id": "Parks",
-     //   "minzoom":16,
-        "type": "fill",
-        "source": {
-            "type": "geojson",
-            "data": parks
-        },
-     "layout": {},
-           "paint": {
-            "fill-color": 'hsl(100, 59%, 76%)',
-            "fill-opacity": 0.6
-          //  "fill-pattern":'triangle-11'
-        }
-            }, 'road-path');
-        
-    });
-
-// no sidewalks layer
-map.on('load', function () {
-
-    map.addLayer({
-        "id": "No Sidewalks",
-        "minzoom":16,
-        "type": "fill",
-        "source": {
-            "type": "geojson",
-            "data": nosidewalks
-        },
-     "layout": {},
-           "paint": {
-          //  "fill-color": 'hsl(0, 0%, 52%)',
-            "fill-color": 'hsl(21, 67%, 67%)',
-            "fill-opacity": 0.6,
-            "fill-pattern":'dot-10'
-        }
-            }, 'water');
-        
-    });
-
-
-// curb cuts layer
-map.on('load', function () {
-
-    map.addLayer({
-        "id": "Curb Cuts",
-        "maxzoom":21,
-        "minzoom":16,
-        "type": "circle",
-        "source": {
-            "type": "geojson",
-            "data": curbcuts
-        },
-    //    'source-layer': 'sf2010',
-        "paint": {
-            "circle-radius": 3,
-            "circle-color": 'rgba(254,224,139,.8)'
-            }
-        }
-        )
-    });
 
 // walk about layer
 map.on('load', function () {
@@ -349,48 +271,20 @@ map.on('load', function () {
         "type": "line",
         "source": {
             "type": "geojson",
-            "data": walking 
+            "data": race_legs
         },
         "layout": {
             "line-join": "round",
             "line-cap": "round"
         },
         "paint": {
-          //  "line-color": "#66cccc",
-            "line-width": 3,
+       //     "line-color": "#822e81",
+            "line-width": 4,
          //   "line-dasharray": [2,4],
             "line-color": {
-                "type": "identity",
-                "property": "color"
-            }
-        }
-
-    });
-});
-
-
-// walk about layer
-map.on('load', function () {
-
-    map.addLayer({
-        "id": "route2",
-        "type": "line",
-        "source": {
-            "type": "geojson",
-            "data": walking_dash 
-        },
-        "layout": {
-            "line-join": "round",
-            "line-cap": "round"
-        },
-        "paint": {
-          //  "line-color": "#66cccc",
-            "line-width": 3,
-            "line-dasharray": [2,4],
-            "line-color": {
-                "type": "identity",
-                "property": "color"
-            }
+              "type": "identity",
+              "property": "color"
+           }
         }
 
     });
@@ -402,7 +296,7 @@ map.on('load', function() {
     map.addLayer({
         'id': 'Buildings',
         'source': 'composite',
-        'minzoom':15,
+      //  'minzoom':15,
         'source-layer': 'building',
         'filter': ['==', 'extrude', 'true'],
         'type': 'fill-extrusion',
