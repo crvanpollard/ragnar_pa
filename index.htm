@@ -75,49 +75,9 @@
           background-repeat: no-repeat;
           transform: translate(28px, 56px, 0);
         }
-        #menu {
-        background: #fff;
-        position: absolute;
-        z-index: 1;
-        top: 20px;
-        right: 20px;
-        border-radius: 3px;
-        width: 120px;
-        border: 1px solid rgba(0,0,0,0.4);
-        font-family: 'Open Sans', sans-serif;
-        }
-        #menu a {
-            font-size: 13px;
-            color: #404040;
-            display: block;
-            margin: 0;
-            padding: 0;
-            padding: 10px;
-            text-decoration: none;
-            border-bottom: 1px solid rgba(0,0,0,0.25);
-            text-align: center;
-        }
-
-        #menu a:last-child {
-            border: none;
-        }
-
-        #menu a:hover {
-            background-color: #f8f8f8;
-            color: #404040;
-        }
-
-        #menu a.active {
-            background-color: #3887be;
-            color: #ffffff;
-        }
-
-        #menu a.active:hover {
-            background: #3074a4;
-        }
         #export{
             position: absolute;
-            top:120px;
+            top:110px;
             left:26px;
             z-index:100;
             background-color:white;
@@ -129,11 +89,11 @@
             font-size:12px;
             text-decoration:none;
             background-image: url(https://raw.githubusercontent.com/crvanpollard/ragnar_pa/master/assets/img/kitt.png);
-            background-size: 25px 25px;
+            background-size: 60px 35px;
              background-position: center; 
             background-repeat: no-repeat;
-            height: 28px;
-            width: 28px;
+            height: 35px;
+            width: 60px;
           }
           #export:hover{
             background-color: #ddd;
@@ -141,7 +101,7 @@
           .legend {
             background-color: #fff;
             border-radius: 3px;
-            bottom: 35px;
+            bottom: 40px;
             right: 20px;
             width: 120px;
             box-shadow: 0 1px 2px rgba(0,0,0,0.10);
@@ -167,6 +127,39 @@
             margin-right: 5px;
             width: 40px;
             }
+             .menu {
+            position:absolute;
+            z-index:99;
+            top: 10px;
+            right: 40px;
+            border-radius:3px;
+            width:120px;
+            }
+          .menu button {
+            font:13px/20px 'Helvetica Neue', sans-serif;
+            background:#4c4d4f;
+            color:#fff;
+            display:block;
+            width: 140px;
+            height:30px;
+            margin:0;
+            padding:0;
+            padding:1px;
+            border:none;
+            border-bottom:1px solid rgba(0,0,0,0.25);
+            cursor:pointer;
+            }
+            .menu button:first-child {
+              border-radius:3px 3px 0 0;
+              }
+            .menu button:last-child {
+              border-radius:0 0 3px 3px;
+              border:none;
+              }
+            .menu button.active,
+            .menu button:hover {
+              background-color:#52a1d8;
+              }
       </style>
   </head>
   
@@ -174,7 +167,9 @@
 <!-- Start Main Body -->
     <div id="container">
       <div id="sidebar" class="col-sm-6">
+     
         <div id="map" class="map"></div>
+    <nav id='menu' class='menu'></nav>
       
         <div id='main_legend' class='legend'>
             <div class="expand-one"><i class="glyphicon glyphicon-minus"></i>&nbsp;&nbsp;Legend</div> 
@@ -188,16 +183,6 @@
           </div>
             </div>
           </div>
-
-       <!--    <div id='county-legend' style='display: none;'>
-            <div class="content-one">
-            <div><span2 style='background-color: #66cccc;margin-right: 10px;'></span2>Walkabout (Upbeat Loop)</div>
-            <div><span2 style='background-color: #FF6666;margin-right: 10px;'></span2>Stroll (Relax Loop)</div>
-            <div style="margin-left: 15px;"><span style='background-color: #FEE08B;margin-right:25px;'></span>Curb Cut</div>
-            <div><img src='assets/img/noside.png' style='height:16px;margin-left:5px'><span style='margin-right: 5px;'></span>No Sidewalk</div>
-          </div>
-          </div>
--->
        </div>   
         <a href='#' id='export'></a>
       </div>
@@ -287,36 +272,29 @@
                 <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:white;margin-top:-13px;">&times;</button>
      <div id="aboutInfo">
-        
-         <p>   
-                 <img  class="dplogo"  src="assets/img/dp1.png" />
-                 <img  class="dptitle" src="assets/img/DP_title.png" />
-                 <img  class="dpdate"  src="assets/img/DP_date.png" />  
-        </p>
+    <div class="pull-right">
+        <img  class="dptitle" src="assets/img/nrider.png" />
+        </div>
         <p class="dp_info">
-           <img  class="dp" src="assets/img/dogpatch.png" />
-           Meet us on the playground at 22nd St.
-           (between Indiana St. and Minnesota St.) <br><br>
-           <b>Pick up a Gold VIP wrist band to receive discounts at Event Sponsor locations.</b>
-           <br><br>
-            Vendors, live music and much more<br> 
-            Live Music at the Main Event Site:<br> 
-            11:00am – DJ Nocturnal of Dogpatch<br>
-            12:15pm – Carragua'o Cuban Band<br>
-            2:00pm – RZN8R (pronounced “resonator”)<br>
-            3:00pm – Dogpatch Dance Studio<br>
-            3:15pm – Austan Found<br>
-            <br>
-            <B>Tea Time by the Dogpatch Center for Arts & Culture</B><br> 
-            Experience the joy of tea time! Free all ages activity. 
+           
+          Hello there freinds of Michael Knight,<br> I am here to help you explore your race legs, exchange locations, and view vital inforamtion needed for your mission.<br><br> Below are a few tips to help you navigate the map:
+          <br><br>
+          - click a name in the sidebar (or an exchange number on the map) to zoom to that location and view info<br><br>
+          - click on the map to hide the info window<br><br>
+          - click K.I.T.T to zoom out to view the whole course<br><br>
+          - toggle the basemap by using the top-right buttons<br><br>
+          - use the fancy compass to rotate and pivet the map view (it's like you're driving a drone)<br><br>
+          - use scroll wheel on mouse to zoom in/out of map <br><br>
+          - click on Race Legs title to open/close runner lists<br>
+
         </p>  
                    
             <div class="modal-footer" >
               <div class="pull-right">   
-              <button type="button" class="btn btn-primary" data-dismiss="modal" id="dpbutton">Explore Dogpatch</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="dpbutton">Explore the Course</button>
               </div>
               <div class="pull-left">
-               <a href="http://www.effortlesscity.com/" target="_new"><img class="ecitylogo" src="assets/img/ecity.png" /></a>
+               <a href="https://www.runragnar.com/event-detail/relay/pa" target="_new"><img class="ecitylogo" src="assets/img/ragnar.png" /></a>
               </div>
           </div>
                 </div>

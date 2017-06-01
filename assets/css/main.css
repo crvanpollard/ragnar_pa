@@ -266,28 +266,25 @@ color:#101010;
   height:70px;
 }
 .dptitle{
-height:90px;
-margin:0px 0px 20px 80px;
-}
-.dpdate{
-width:400px;
-margin:0px 0px 20px 80px;
+height:350px;
+margin:10px 0px 20px 10px;
 }
 .dp{
   height:40px;
 }
 .dp_info{
   color:white;
-  text-align: center;
+  text-align: left;
+  margin:10px 0px 0px 0px;
 }
 #dpbutton{
-  background-color:#ff6666;
-  margin:50px 0px 0px 0px;
+  background-color:#f21d21;
+  margin:30px 0px 0px 0px;
   border-color: #ffb2b2;
 }
 .ecitylogo{
-  margin:5px 0px 0px 0px;
-  height:110px;
+  margin:15px 0px 0px 0px;
+  height:70px;
 }
 @media (max-width: 1024px){
                  .listings .item .title {
