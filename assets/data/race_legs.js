@@ -7605,7 +7605,7 @@
         "zip": 18229,
         "start": "4:56:00 PM",
         "exchange": 34,
-        "color": "#d62246",
+        "color": "#4b1d3f",
         "Elev_minus": 259,
         "city": "Jim Thorpe",
         "Name": "Nancy Oh",
